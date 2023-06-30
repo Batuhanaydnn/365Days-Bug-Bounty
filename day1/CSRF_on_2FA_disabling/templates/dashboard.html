@@ -1,0 +1,8 @@
+<h1>Welcome, {{ user.username }}</h1>
+<p>2FA Enabled: {{ user.2fa_enabled }}</p>
+<form method="POST" action="/disable_2fa">
+    <input type="hidden" name="username" value="{{ user.username }}">
+    <input type="hidden" name="2fa_enabled" value="false">
+    <input type="submit" value="Disable 2FA">
+</form>
+<p>{{ message }}</p>
