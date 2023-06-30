@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>Login</title>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="/login">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"><br><br>
+        <label for="verification_code">2FA Code:</label>
+        <input type="text" name="verification_code" id="verificationCode"><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+
+</html>
