@@ -63,3 +63,37 @@ Bu nedenle, JS dosyası analizi sırasında aşağıdaki adımları izlemek öne
 -   JS dosyalarının kaynakları ve içeriği doğrulamak için kullanılan araçları kullanmak.
 -   Web uygulamasında kullanılan üçüncü taraf JS kütüphanelerini güncel tutmak ve güvenilir kaynaklardan temin etmek.
 
+js_file_analysis dosyasında örnek bir simülasyon verilmiştir
+
+## 2FA Code Reusability
+
+**Açıklama:**
+
+Bu güvenlik açığı, bir web uygulamasında veya sistemde kullanılan İki Faktörlü Kimlik Doğrulama (2FA) mekanizmasında ortaya çıkar. 2FA, kullanıcıların kimlik doğrulamasını sağlamak için ek bir adım olan bir doğrulama yöntemidir. Genellikle kullanıcı adı ve şifre kombinasyonuna ek olarak, kullanıcılardan rastgele üretilen bir doğrulama kodu girmeleri istenir.
+
+Ancak, bu güvenlik açığında, sunucu tarafından sağlanan 2FA kodu, başarılı kimlik doğrulamasından sonra geçerliliği iptal edilmeden bırakılır. Sonuç olarak, aynı 2FA kodu tekrar tekrar kullanılabilir ve bu durum, bir saldırganın geçerli bir 2FA kodu elde etmesi durumunda hesapları ele geçirmek için kullanılabilecek potansiyel bir zafiyet yaratır.
+
+**Açığın Oluşma Nedenleri ve Trickler:**
+
+1.  **Geçersizleştirme Eksikliği (Missing Expiration):** Sunucu, başarılı kimlik doğrulamasından sonra 2FA kodunu geçersizleştirmiyor veya süresini kısıtlamıyorsa, saldırganlar aynı kodu birden fazla kez kullanabilirler.
+    
+2.  **Tekrar Kullanılabilir Doğrulama Kodları (Reusable Verification Codes):** Sunucu, 2FA kodlarını tek kullanımlık olarak ayarlamak yerine, her kodu bir kez kullanılmak üzere değil de birden çok kez kullanılabilir olarak tasarlıyorsa, bu güvenlik açığı oluşabilir.
+    
+3.  **Kodları İzleme Eksikliği (Lack of Code Tracking):** Sunucu, kullanılan 2FA kodlarını izlemiyor veya kayıt altına almıyorsa, birden çok kez kullanılabilir kodlar tespit edilemez ve saldırganlar açığı istismar edebilir.
+    
+4.  **Zayıf Kod Üretimi (Weak Code Generation):** Sunucu, 2FA kodlarını tahmin edilebilir veya tekrar eden bir şekilde üretiyorsa, saldırganlar kodları önceden tahmin edebilir ve kullanabilirler.
+    
+
+**Potansiyel Saldırı Senaryosu:**
+
+1.  Saldırgan, hedef kullanıcının 2FA kodunu ele geçirir veya tahmin eder.
+    
+2.  Hedef kullanıcının kimlik doğrulaması için bu 2FA kodunu kullanır ve başarılı bir şekilde giriş yapar.
+    
+3.  Sunucu, kullanılan 2FA kodunu geçersizleştirmediği veya takip etmediği için, saldırgan aynı kodu tekrar kullanabilir.
+    
+4.  Saldırgan, tekrar kullanılan 2FA kodunu kullanarak hesaba erişebilir veya yetkisiz işlemler gerçekleştirebilir.
+    
+two_fa_code_reusability dosyasında örnek bir simülasyon verilmiştir
+
+
