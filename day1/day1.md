@@ -97,3 +97,17 @@ Ancak, bu güvenlik açığında, sunucu tarafından sağlanan 2FA kodu, başar�
 two_fa_code_reusability dosyasında örnek bir simülasyon verilmiştir
 
 
+## Lack of Brute-Force Protection
+
+"Lack of Brute-Force Protection" (Brute-Force Korumasının Olmaması) güvenlik açığı, bir 2FA (Two-Factor Authentication - İki Faktörlü Kimlik Doğrulama) sistemindeki zayıf noktalardan biridir. Bu açık, saldırganların doğrulama kodlarını tahmin etmek için brute-force saldırısı yapabileceği anlamına gelir. İşte bu açığın ne olduğunu ve ilgili trickleri açıklayan bazı detaylar:
+
+1.  Açık Ne İfade Ediyor? Brute-force korumasının olmaması demek, sistemde bir kullanıcının doğrulama kodunu tahmin etmek için sınırsız sayıda deneme yapabileceği anlamına gelir. Sistem, doğrulama kodunun doğru olup olmadığını kontrol etmek için bir sınırlama veya güvenlik önlemi uygulamaz. Bu durumda, bir saldırganın tüm olası kombinasyonları deneyerek doğru kodu tahmin etme şansı vardır.
+    
+2.  Brute-Force Saldırısı Nasıl Gerçekleştirilir? Saldırganlar, brute-force saldırısı için özel yazılımlar veya araçlar kullanabilirler. Bu yazılımlar, doğrulama kodlarını sistemli bir şekilde üretir ve doğru kodu bulana kadar sisteme gönderir. Saldırganlar, doğrulama kodu uzunluğunu, karmaşıklığını ve sistemdeki diğer parametreleri dikkate alarak deneme sayısını belirleyebilirler.
+    
+3.  Trickler ve İpuçları:
+    
+
+-   Doğrulama kodlarının uzunluğunu ve karmaşıklığını artırarak brute-force saldırılarını zorlaştırabilirsiniz. Daha uzun ve karmaşık kodlar, saldırganların doğru kodu tahmin etme olasılığını azaltır.
+-   Sistemde bir deneme limiti veya sınırlama mekanizması uygulayarak brute-force saldırılarını engelleyebilirsiniz. Örneğin, belirli bir süre içinde belirli bir sayıda başarısız deneme yapılması durumunda hesap kilitlenebilir veya gecikmeli yanıt verilebilir.
+-   İçerik tabanlı saldırıları engellemek için CAPTCHA veya benzeri mekanizmalar kullanabilirsiniz. Bu tür mekanizmalar, otomatik saldırı yazılımlarının doğrulama kodlarını otomatik olarak tahmin etmesini engeller.
