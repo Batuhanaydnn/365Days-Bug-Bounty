@@ -28,3 +28,18 @@ Status Code Manipulation işlemi, yanıtın başarısız olduğunu belirten 4xx 
 
 status_code_mannipulation dosyasında örnek bir simülasyon tasarlanmıştır.
 
+## 2FA Code Leakage in Response
+
+Türkçe olarak "2FA Kodunun Yanıtta Sızması" olarak ifade edilebilir. Bu güvenlik açığı, kullanıcının kimlik doğrulama sürecinde girilen 2FA kodunun yanıtta (response) ifşa edilmesini ifade eder.
+
+Bu güvenlik açığı, genellikle hatalı bir şekilde uygulanan veya güvenlik kontrollerinin eksik olduğu durumlarda ortaya çıkar. Aşağıda bu güvenlik açığının nasıl oluştuğunu ve ne olduğunu açıklamak için basit bir senaryo verilmiştir:
+
+- Kullanıcı, kimlik doğrulama sürecinde 2FA kodunu girmek için bir istek gönderir.
+- Sunucu, 2FA kodunu doğrular ve kullanıcının kimliğini onaylar.
+- Kimlik doğrulama süreci tamamlandıktan sonra sunucu bir yanıt döndürür.
+- Ancak, sunucu yanıtında 2FA kodunu içeren bir mesajı veya veriyi ifşa eder.
+- Bu durumda, yanıtı gören herhangi bir saldırgan veya kötü niyetli kullanıcı, 2FA kodunu alabilir ve güvenlik önlemlerini atlayarak hesaba erişebilir.
+
+Bu güvenlik açığı, 2FA kodunun gizli kalması gereken bir bilgi olduğu için ciddi bir risk oluşturur. 2FA kodu, ikinci bir kimlik doğrulama faktörü olarak kullanıldığından, kullanıcının kimliğinin güvenliğini sağlamak için önemlidir. Eğer 2FA kodu yanıtta sızdırılırsa, bir saldırganın hesaba yetkisiz erişim sağlama olasılığı artar.
+
+twofa_code_leakage_in_response dosyasında örnek bir similasyon tasarlanmıştır.
