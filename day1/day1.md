@@ -111,3 +111,30 @@ two_fa_code_reusability dosyasında örnek bir simülasyon verilmiştir
 -   Doğrulama kodlarının uzunluğunu ve karmaşıklığını artırarak brute-force saldırılarını zorlaştırabilirsiniz. Daha uzun ve karmaşık kodlar, saldırganların doğru kodu tahmin etme olasılığını azaltır.
 -   Sistemde bir deneme limiti veya sınırlama mekanizması uygulayarak brute-force saldırılarını engelleyebilirsiniz. Örneğin, belirli bir süre içinde belirli bir sayıda başarısız deneme yapılması durumunda hesap kilitlenebilir veya gecikmeli yanıt verilebilir.
 -   İçerik tabanlı saldırıları engellemek için CAPTCHA veya benzeri mekanizmalar kullanabilirsiniz. Bu tür mekanizmalar, otomatik saldırı yazılımlarının doğrulama kodlarını otomatik olarak tahmin etmesini engeller.
+
+## Missing 2FA Code Integrity Validation
+
+
+"Missing 2FA Code Integrity Validation" açığı, bir web uygulamasında 2FA (İki Faktörlü Kimlik Doğrulama) kullanılırken, doğrulama kodlarının bütünlüğünün doğrulanmadığı bir zafiyeti ifade eder. Bu açığın neden olduğu sorun, bir kullanıcının 2FA doğrulama kodunu bir kere alıp daha sonra başka bir kullanıcının hesabında bu kodu kullanarak 2FA'yi atlayabilmesidir.
+
+Aşağıda bu açığı anlatan bir senaryo ve ilgili trickler verilmiştir:
+
+**Senaryo**:
+
+1.  Alice ve Bob adında iki kullanıcı, bir web uygulamasında hesaplarına 2FA ile giriş yapıyor.
+2.  Alice, 2FA kodunu alıyor ve doğrulama işlemini tamamlıyor.
+3.  Uygulama, Alice'in doğrulama kodunu kaydetmez ve kodun daha önce kullanıldığına dair herhangi bir doğrulama yapmaz.
+4.  Bob da doğrulama kodunu alıyor ve aynı kodu daha önce Alice'in yaptığı gibi uygulamaya giriyor.
+5.  Uygulama, kodunun daha önce kullanıldığına dair herhangi bir kontrol yapmadığından, Bob hesabına 2FA doğrulama kodu olmadan erişebiliyor.
+
+Bu durumda, uygulama 2FA doğrulama kodlarının tek kullanımlık ve benzersiz olması gerektiğini kontrol etmez ve aynı kodun birden fazla kez kullanılmasına izin verir.
+
+**Trickler**:
+
+1.  Aynı kodun birden fazla kez kullanılması: Uygulama, doğrulama kodlarını doğrulamadan önce daha önce kullanılmış kodları kontrol etmiyor. Bu da aynı kodun birden fazla kez kullanılmasına olanak tanır.
+    
+2.  Kodların kaydedilmemesi: Uygulama, doğrulama kodlarını kullanıldıktan sonra kaydetmiyor veya doğrulanmış kodların geçerliliğini doğrulamıyor. Bu nedenle, kodun daha önce kullanılıp kullanılmadığını takip edemiyor ve tekrar kullanıma izin veriyor.
+    
+
+Bu güvenlik açığı, saldırganların başarılı bir şekilde elde ettikleri bir 2FA doğrulama kodunu hedeflenen farklı kullanıcıların hesaplarına uygulayarak sistemde yetkisiz erişim elde etmelerine izin verebilir.
+
