@@ -138,3 +138,23 @@ Bu durumda, uygulama 2FA doğrulama kodlarının tek kullanımlık ve benzersiz 
 
 Bu güvenlik açığı, saldırganların başarılı bir şekilde elde ettikleri bir 2FA doğrulama kodunu hedeflenen farklı kullanıcıların hesaplarına uygulayarak sistemde yetkisiz erişim elde etmelerine izin verebilir.
 
+
+## CSRF on 2FA Disabling
+
+"CSRF on 2FA Disabling" adı verilen bu güvenlik açığı, 2FA'nın devre dışı bırakılmasında CSRF (Cross-Site Request Forgery) korumasının olmaması ve yetkilendirme onayının bulunmaması durumunda ortaya çıkar.
+
+Bu açığın çalışma mantığı şu şekildedir:
+
+Saldırgan, kullanıcının oturum açtığı bir web sitesi veya uygulama hedef alınır.
+
+Bu hedef web sitesinde veya uygulamada, kullanıcının 2FA'nın devre dışı bırakılmasına yönelik bir işlev veya form bulunur.
+
+Saldırgan, kötü niyetli bir web sitesi oluşturur veya bir saldırı bağlantısı oluşturarak kullanıcılara gönderir.
+
+Kullanıcı, saldırgan tarafından oluşturulan web sitesini ziyaret eder veya saldırı bağlantısına tıklar.
+
+Saldırganın web sitesi, kullanıcının oturum açtığı hedef web sitesine veya uygulamaya otomatik olarak bir istekte bulunur.
+
+Bu istek, kullanıcının kimlik doğrulama bilgilerini kullanarak 2FA'nın devre dışı bırakılmasını sağlar. Bunun sonucunda 2FA koruması ortadan kalkar ve saldırgan, kullanıcının hesabına yetkisiz erişim elde eder.
+
+Bu açık, kullanıcıların oturum açıkken saldırganların yetkisiz şekilde 2FA'nın devre dışı bırakılmasını sağlamasına izin verir. Özellikle hedef web sitesi veya uygulama, CSRF koruması ve 2FA'nın devre dışı bırakılması için ek bir kimlik doğrulama veya onay adımı olmaksızın bu işlemi gerçekleştiriyorsa, kullanıcıların hesapları risk altında olabilir.
