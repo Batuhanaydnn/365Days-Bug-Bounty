@@ -1,56 +1,56 @@
-## REDOS Zafiyetlerini anlamak
+## Understanding REDOS Vulnerabilities
 
-Bir websitesi geliştiren bir developer olduğunuzu düşünün. (Ben Hala daha yapıyorum bunu) bir mail adresinin kurallara uygun bir şekilde biçimlendirilip biçimlendirimediğini test etmek istiyorsunuz. Aklımıza gelen ilk şey çoğu zaman bir Regex yazarak bu ifadenin doğruluğunu kontrol etmek ve hatalı yahut saldırgan girişleri engellemektir. Çoğu yazılımcının atladığı nokta iste ReDos'tur. ReDos backendde belirlenmiş Regex'in testler sonucunda tahmini olarak çıkartılması ve oluşturulan zararlı yükle sunucu kaynaklarının aşırı tüketilerek zarar vermeyi amaçlayan bir güvenlik açığıdır. Bunu bir yazılımcı olarakta hacker olarakta farketmek zor olduğundan ve çoğu zaman kullanılan framework bunu engellediğinden dolayı web applicaton pentest kısmında çok fazla bu tip açıkla karşılaşmazsınız. Fakat bazen şirketler gelip Blue takımlarını test etmek için sizden yardım ister. ReDos tipi yükler Blue takımları çok üzecek şeyler için kullanılabileceğini sadece söylemek istiyorum. Bunun örneklerini vermeyeceğim. 
+Imagine you are a developer building a website (I still do it) and you want to test if a mail address is formatted according to the rules. The first thing that comes to mind is often to write a Regex to check the correctness of this expression and prevent incorrect or offensive input. What most developers miss is ReDos. ReDos is a vulnerability that aims to damage the server resources by overconsuming server resources with the malicious load created by guessing the Regex specified in the backend as a result of the tests. Since it is difficult to notice this as a software developer or a hacker and most of the time the framework used prevents it, you will not encounter many such vulnerabilities in the web application pentest part. But sometimes companies come and ask you for help to test their Blue suites. I just want to say that ReDos type payloads can be used for things that can make Blue teams very upset. I will not give examples of this. 
 
-Şimdi biraz hikayeyi bırakıp uygulamaya geçelim. 
+Now let's leave a little bit of the story and go to practice. 
 
 ```
 /(a+)+$/
 ```
 
-Yukarıda verilmiş olan regex bir ifade içerisinde ardışık olarak kullanılan a karakterlerini tanımlar. Saldırganlar bu çeşit bir regexi manipüle etmek için çok sayıda a harfini göndererek saldırı yapabilirler. Örneğin "aaaaaaaaaaaaaaaaaaaaaaab" gibi bir metin ifadenin çalışmasını aşırı uzatır ve uygulamanın kaynaklarını tüketir.  
+The regex given above defines the characters a used consecutively in an expression. Attackers can manipulate this type of regex by sending a large number of a's. For example, a text like "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab" would over-extend the execution of the expression and consume the application's resources.  
 
-### Gerçek Hayattan uygulamalar
-Gerçek Hayatta Uygulamalar:
-Redos saldırıları, düzenli ifadeleri kullanan birçok uygulama ve senaryoda gerçekleştirilebilir. İşte bazı örnekler:
+### Real Life applications
+Real Life Applications:
+Redos attacks can be performed in many applications and scenarios that use regular expressions. Here are some examples:
 
-E-posta adresi doğrulama: Bir uygulama, kullanıcının girdiği e-posta adresinin geçerliliğini kontrol etmek için düzenli ifadeler kullanabilir. Ancak, düzenli ifadenin optimize edilmemesi durumunda, bir saldırgan çok uzun veya karmaşık bir e-posta adresiyle saldırı yapabilir.
+Email address validation: An application can use regular expressions to check the validity of the email address entered by the user. However, if the regular expression is not optimized, an attacker can attack with an email address that is too long or complex.
 
-Veri geçerliliği kontrolü: Web formları veya veritabanı girişleri gibi yerlerde düzenli ifadeler, kullanıcının girdiği verilerin geçerliliğini kontrol etmek için kullanılabilir. Ancak, saldırganlar, özellikle kullanıcıdan beklenmeyen büyük veya karmaşık verilerle saldırı yapabilir.
+Data validity check: In places like web forms or database entries, regular expressions can be used to check the validity of the data entered by the user. However, attackers can attack with large or complex data, especially data that is not expected from the user.
 
-Log analizi: Sistem loglarını analiz etmek için düzenli ifadeler kullanıldığında, saldırganlar, özel olarak oluşturulmuş bir metinle log analiz işlemini yavaşlatabilir veya engelleyebilir.
+Log analysis: When regular expressions are used to analyze system logs, attackers can slow down or block the log analysis process with specially constructed text.
 
-### Bir ReDos Zafiyeti Keşfettiğimizi nasıl anlarız
-Bir redos keşfettiğinizde aşağıdaki ifadelere benzer çıktılarla karşılaşıyorsanız bir ReDos zafiyeti keşfetmiş olabilirsiniz.
+### How to know if we have discovered a ReDos vulnerability
+If you encounter outputs similar to the following statements when you discover a redos, you may have discovered a ReDos vulnerability.
 
-- Uygulama hızında belirgin bir düşüş veya yavaşlama: Redos saldırıları, bir düzenli ifadeye karşı karmaşık bir girişin işlenmesi nedeniyle hizmetin yavaşlamasına veya tamamen çökmesine yol açabilir. Eğer bir uygulama beklenmedik bir şekilde yavaşlamışsa veya cevap vermiyorsa, Redos saldırısını düşünmek önemlidir.
+- A significant decrease or slowdown in application speed: Redos attacks can cause a service to slow down or crash completely due to the processing of a complex input against a regular expression. If an application is unexpectedly slow or unresponsive, it is important to consider a Redos attack.
 
-- İşlem süresindeki anormallikler: Redos saldırıları, düzenli ifadenin işlem süresini artırarak kaynak tüketir. Eğer düzenli ifadelerin işlem süresinde normalden çok daha uzun süren işlemler fark ederseniz, potansiyel bir Redos saldırısı olabilir.
+- Processing time anomalies: Redos attacks consume resources by increasing the processing time of a regular expression. If you notice anomalies in the processing time of regular expressions that take much longer than normal, it could be a potential Redos attack.
 
-- Karmaşık veya tekrarlayan düzenli ifadelerin kullanımı: Düzenli ifadelerde karmaşık veya tekrarlayan yapılar (geriye dönüş, yineleme vb.) içeren ifadeler, potansiyel Redos zafiyetlerini işaret edebilir. Özellikle düzenli ifadeleri kullanırken performans ve optimize edilme konularına dikkat etmek önemlidir.
+- Use of complex or repetitive regular expressions: Expressions that contain complex or repetitive structures (backtracking, iteration, etc.) in regular expressions may indicate potential Redos vulnerabilities. It is important to pay attention to performance and optimization issues, especially when using regular expressions.
 
-## Birkaç uygulama ve similasyon hazırlayalım.
-Günün dosyalarında redos zafiyeti için bazı simülasyonlar gerçekletirdim. Bunlar redos zafiyetini tanımanıza ve bununla ilgili geliştirilen uygulamalarda yapılan hatalı daha iyi kavramanıza yardımcı olacaktır.
+## Let's prepare some applications and simulations.
+In the files of the day I have implemented some simulations for the redos vulnerability, which will help you to recognize the redos vulnerability and better understand the mistakes made in the applications developed around it.
 
-1. Redos zafiyeti / Email Validation
+1. Redos vulnerability / Email Validation
 
-Flask uygulamasi, `/validate`endpoint'i üzerinden POST isteklerini dinleyerek kullanıcının girdiği e-posta adresini alır. Ardından `validate_email()`fonksiyonunu kullanrak e-posta adresinin geçerliliğini kotrol eder. Geçerli ise büyük ihtimalle register veya login kısmına devam eder fakat bizim uygulamamızda geçerlilik sonucunda "E-posta adresi geçerli" yanıtını döndürür. Geçersiz ise "Geçersiz e-posta adresi" yanıtını döndürecektir
+The Flask application listens to POST requests via the `/validate` endpoint and retrieves the e-mail address entered by the user. Then it checks the validity of the e-mail address using the `validate_email()` function. If it is valid, it will probably continue with the register or login part, but in our application, it will return "The email address is valid" as a result of validity. If invalid, it will return "Invalid email address".
 
-Burada e-posta adresinin geçerliliğini kontorl etmek için bir regex kullandık. `(r'^[\w\.-]+@[\w\.-]+\.\w+$')` . Denerseniz pek çok e-posta adresi için geçerli bir doğrulama olduğunu farkedersiniz. Fakat bu ifade bir Redos açığına yol açabilir.
+Here we used a regex to check the validity of the email address. `(r'^[\w\.-]+@[\w\.-]+\.\w+$')` . If you try it, you'll notice that it's a valid validation for many email addresses. However, this statement can lead to a Redos vulnerability.
 
-Redos açığı, giriş verisindeki düzenli ifadenin performansını hatalı yazılmış regex yüzünden mahfedecektir. `[\w\.-]+` tarafından temsil edilen [\w\.-] karakter kümesi, alfanümerik karakterler, nokta ve tirenin birleşimini kabul eder. Bu kısım, ardışık olarak tekrarlandığında (yineleme ile), saldırganın gönderdiği uzun veya karmaşık bir girişle Redos saldırısına yol açabilir.
+A Redos vulnerability will ruin the performance of the regular expression in the input data because of a misspelled regex. The [\w\.-] character set, represented by `[\w\.-]+`, accepts a combination of alphanumeric characters, periods and dashes. This part, when repeated consecutively (by iteration), can lead to a Redos attack with a long or complex input sent by the attacker.
 
-Saldırgan, örneğin 'aaaaaaaaaaaaaaaaaaaaaaaaaaaab@aaaaaaaaaaab.com' gibi bir ifade gönderdiğinde `[\w\.-]+` kısmının ardışık olarak birçok 'a' karakteriyle eşleştiği bir durum ortaya çıkar. Regex bu durumu eşitleyip ilerlemek için normalde olduğundan çok daha fazla zaman harcar ve bu durum performansı düşürür hatta hizmetin çökmesine dahi sebep olabilir.
+When an attacker sends, for example, an expression like 'aaaaaaaaaaaaaaaaaaaaaaaaaaaab@aaaaaaaaaaab.com', a situation arises where the `[\w\.-]+` part matches many consecutive 'a' characters. Regex spends much more time than usual to synchronize and progress, which degrades performance and may even crash the service.
 
-2. Redos Zafiyet Tespiti / Fuzzing test yöntemi
+2. Redos Vulnerability Detection / Fuzzing test method
 
-Fuzzing, uygulamalarda rastgele veya özel olarak oluşturulmuş girişlere saldırarak hata ve zayıflıkları bulmayı amaçlayan bi test yöntemidir. Burada farklı uzunluklarda ve karmaşıklıklarda regex'imize ifadeler göndererek regexin tepki süresini ölçerek potansiyel redos zafiyetlerini bulmayı amaçlamaktayız.
+Fuzzing is a testing method that aims to find bugs and weaknesses in applications by attacking random or specially generated inputs. Here we aim to find potential redos vulnerabilities by sending expressions of different lengths and complexities to our regex and measuring the response time of the regex.
 
-3. Bir input verildiğinde / Regex üretici
-İlk toolu yaptıktan sonra aklıma şöyle bir şey geldi. Biz input ifadeleri vererek bu input ifadelerine uygun bir regex ifade oluşturabilir miyiz? Evet tuhaf bir fikir fakat mümkün.
+3. Given an input / Regex generator
+After making the first tool, something like this came to my mind. Can we give input expressions and create a regex expression suitable for these input expressions? Yes it's a weird idea but it is possible.
 
-## Ekler ve önerilen dökümantasyonlar
-Burada yazdığım pek çok şeyi sizin gibi internetten öğrenip özetledim. Daha fazlasını ve benin incelediğim kaynakları okumak kendi denemelerinizi yapmak istiyorsanız aşağıdaki linklere bakabilirsiniz.
+## Appendices and recommended documentation
+I have learned and summarized many of the things I have written here from the internet like you. If you want to read more and the sources I have reviewed and do your own experiments, you can check the links below.
 
 - https://rexegg.com
 - https://regexone.com
@@ -59,6 +59,4 @@ Burada yazdığım pek çok şeyi sizin gibi internetten öğrenip özetledim. D
 - https://regular-expressions.info/redos.html 
 - https://hackerone.com/reports/511381
 - https://hackerone.com/reports/661722
-
-
 

@@ -1,13 +1,14 @@
+[Turkish](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/BeniOku.md)
 
 # 365Days-Bug-Bounty
 
-Merhaba dostlar, Ben Muhammed Batuhan Aydın. Bu repo gün gün ilerleyeceğim ve elimden geldiğince güvenlik açıklarının simülasyonlarını hazırlayacağım aslı
+Hello friends, I am Muhammed Batuhan Aydın. I will progress this repo day by day and prepare simulations of vulnerabilities as much as I can.
 
-## [Aslı Burada](https://github.com/harsh-bothra/learn365/tree/main)
+## [Repo is Here](https://github.com/harsh-bothra/learn365/tree/main)
 
-Harsh Bothra'nın 365 günlük Challangena farklı bir bakış açısı katmak için tasarlanmıştır. Umarım challenge'ı başarıyla tamamlayabilirim. Günlerin içerisindeki similasyonlar aracılığıyla teknikleri sadece teorik olarak değil aynı zamanda uygulamalı olarak öğrenmeniz dileğiyle. Artı olarak önceliğim bu içeriği türkçe olarak hazırlamak çünkü siber güvenlikle ilgili türkçe içerikler ya çok eski ya da çok boktan oluyorlar.
+Harsh Bothra's 365 days Challangena is designed to give a different perspective. I hope I can successfully complete the challenge. I hope you will learn the techniques not only theoretically but also practically through the simulations within the days. You can try many simulations yourself by browsing the contents of the days.
 
-Repoyu Forklayarak farklı dillerde yazılmış simülasyonlarınızı gönderebilir yahut eklemek istediğiniz kısımları pr atabilirsiniz. Yıldız Yıldızoğlu atmayı unutmayın. İyi günler dilerim. Kodunuz bol bugınız az kazancınız bol olsun.
+You can send your simulations written in different languages by forking the repo or you can pr the parts you want to add. Don't forget to star me. I wish you a good day. May you have plenty of code, less bugs and more earnings.
 
- - [Gün 1](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day1/day1.md)
- - [Gün 2](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day2/day2.md)
+ - [Day 1](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day1/day1.md)
+ - [Day 2](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day2/day2.md)
