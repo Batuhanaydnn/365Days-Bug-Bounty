@@ -49,6 +49,16 @@ Fuzzing, uygulamalarda rastgele veya özel olarak oluşturulmuş girişlere sald
 3. Bir input verildiğinde / Regex üretici
 İlk toolu yaptıktan sonra aklıma şöyle bir şey geldi. Biz input ifadeleri vererek bu input ifadelerine uygun bir regex ifade oluşturabilir miyiz? Evet tuhaf bir fikir fakat mümkün.
 
+## Ekler ve önerilen dökümantasyonlar
+Burada yazdığım pek çok şeyi sizin gibi internetten öğrenip özetledim. Daha fazlasını ve benin incelediğim kaynakları okumak kendi denemelerinizi yapmak istiyorsanız aşağıdaki linklere bakabilirsiniz.
+
+- https://rexegg.com
+- https://regexone.com
+- https://speakerdeck.com/harshbothra/having-fun-with-regex
+- https://javascript.info/regexp-catastrophic-backtracking
+- https://regular-expressions.info/redos.html 
+- https://hackerone.com/reports/511381
+- https://hackerone.com/reports/661722
 
 
 
