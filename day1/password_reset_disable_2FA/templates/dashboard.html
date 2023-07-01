@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Welcome to the Dashboard</h1>
+    <p>Here you can change your password and email address.</p>
+    <form action="/change_password" method="POST">
+        <label for="new_password">New Password:</label>
+        <input type="password" id="new_password" name="new_password"><br><br>
+        <input type="submit" value="Change Password">
+    </form>
+    <br>
+    <form action="/change_email" method="POST">
+        <label for="new_email">New Email:</label>
+        <input type="text" id="new_email" name="new_email"><br><br>
+        <input type="submit" value="Change Email">
+    </form>
+</body>
+
+</html>
