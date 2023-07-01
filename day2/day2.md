@@ -32,6 +32,15 @@ Bir redos keşfettiğinizde aşağıdaki ifadelere benzer çıktılarla karşıl
 ## Birkaç uygulama ve similasyon hazırlayalım.
 Günün dosyalarında redos zafiyeti için bazı simülasyonlar gerçekletirdim. Bunlar redos zafiyetini tanımanıza ve bununla ilgili geliştirilen uygulamalarda yapılan hatalı daha iyi kavramanıza yardımcı olacaktır.
 
+1. Redos zafiyeti / Email Validation
+
+Flask uygulamasi, `/validate`endpoint'i üzerinden POST isteklerini dinleyerek kullanıcının girdiği e-posta adresini alır. Ardından `validate_email()`fonksiyonunu kullanrak e-posta adresinin geçerliliğini kotrol eder. Geçerli ise büyük ihtimalle register veya login kısmına devam eder fakat bizim uygulamamızda geçerlilik sonucunda "E-posta adresi geçerli" yanıtını döndürür. Geçersiz ise "Geçersiz e-posta adresi" yanıtını döndürecektir
+
+Burada e-posta adresinin geçerliliğini kontorl etmek için bir regex kullandık. `(r'^[\w\.-]+@[\w\.-]+\.\w+$')` . Denerseniz pek çok e-posta adresi için geçerli bir doğrulama olduğunu farkedersiniz. Fakat bu ifade bir Redos açığına yol açabilir.
+
+Redos açığı, giriş verisindeki düzenli ifadenin performansını hatalı yazılmış regex yüzünden mahfedecektir. `[\w\.-]+` tarafından temsil edilen [\w\.-] karakter kümesi, alfanümerik karakterler, nokta ve tirenin birleşimini kabul eder. Bu kısım, ardışık olarak tekrarlandığında (yineleme ile), saldırganın gönderdiği uzun veya karmaşık bir girişle Redos saldırısına yol açabilir.
+
+Saldırgan, örneğin 'aaaaaaaaaaaaaaaaaaaaaaaaaaaab@aaaaaaaaaaab.com' gibi bir ifade gönderdiğinde `[\w\.-]+` kısmının ardışık olarak birçok 'a' karakteriyle eşleştiği bir durum ortaya çıkar. Regex bu durumu eşitleyip ilerlemek için normalde olduğundan çok daha fazla zaman harcar ve bu durum performansı düşürür hatta hizmetin çökmesine dahi sebep olabilir.
 
 
 
