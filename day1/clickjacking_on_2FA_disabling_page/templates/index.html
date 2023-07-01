@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2FA Demo</title>
+</head>
+
+<body>
+    <h1>Welcome to the 2FA Demo</h1>
+    <p>Please log in to continue:</p>
+    <form action="{{ url_for('dashboard') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Log In">
+    </form>
+</body>
+
+</html>

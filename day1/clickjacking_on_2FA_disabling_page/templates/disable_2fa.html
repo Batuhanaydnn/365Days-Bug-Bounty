@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Disable 2FA</title>
+</head>
+
+<body>
+    <h1>Disable 2FA</h1>
+    <form action="{{ url_for('disable2fa') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Disable 2FA">
+    </form>
+</body>
+
+</html>
