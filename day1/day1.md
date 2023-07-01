@@ -153,3 +153,17 @@ Bu açığın çalışma mantığı şu şekildedir:
 - Bu istek, kullanıcının kimlik doğrulama bilgilerini kullanarak 2FA'nın devre dışı bırakılmasını sağlar. Bunun sonucunda 2FA koruması ortadan kalkar ve saldırgan, kullanıcının hesabına yetkisiz erişim elde eder.
 
 Bu açık, kullanıcıların oturum açıkken saldırganların yetkisiz şekilde 2FA'nın devre dışı bırakılmasını sağlamasına izin verir. Özellikle hedef web sitesi veya uygulama, CSRF koruması ve 2FA'nın devre dışı bırakılması için ek bir kimlik doğrulama veya onay adımı olmaksızın bu işlemi gerçekleştiriyorsa, kullanıcıların hesapları risk altında olabilir.
+
+## Password Reset Disable 2FA
+
+"Password Reset Disable 2FA" açığı, kullanıcıların şifre veya e-posta değişikliği yaparken 2FA'nın devre dışı bırakılması durumunda oluşur. Bu açıkta, saldırganlar kullanıcının hesabına erişebilmek için şifreyi sıfırlayabilir veya e-posta adresini değiştirebilir ve böylece 2FA korumasını devre dışı bırakabilir.
+
+Açığın nasıl çalıştığını anlatan bir senaryo şu şekilde olabilir:
+
+- Saldırgan, hedef kullanıcının hesap bilgilerine veya e-posta adresine erişim sağlar.
+- Saldırgan, hedef kullanıcının hesabına giriş yapar ve şifre sıfırlama veya e-posta değiştirme işlemine başlar.
+- Şifre sıfırlama veya e-posta değiştirme formunda saldırgan, hedef kullanıcının 2FA ayarlarını etkileyen bir değişiklik yapar.
+- İşlem tamamlandığında, kullanıcının şifresi sıfırlanır veya e-posta adresi değiştirilir, ancak 2FA devre dışı bırakılır.
+- Artık saldırgan, hedef kullanıcının hesabına şifre ve 2FA kodu olmadan erişebilir.
+
+Bu açık, 2FA'nın güvenlik avantajını ortadan kaldırır ve hesapları saldırganların erişimine açık hale getirir. Kullanıcılar şifrelerini veya e-posta adreslerini değiştirdiklerinde, 2FA'nın otomatik olarak devre dışı bırakılmaması gerekmektedir.
