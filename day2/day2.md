@@ -46,6 +46,8 @@ Saldırgan, örneğin 'aaaaaaaaaaaaaaaaaaaaaaaaaaaab@aaaaaaaaaaab.com' gibi bir 
 
 Fuzzing, uygulamalarda rastgele veya özel olarak oluşturulmuş girişlere saldırarak hata ve zayıflıkları bulmayı amaçlayan bi test yöntemidir. Burada farklı uzunluklarda ve karmaşıklıklarda regex'imize ifadeler göndererek regexin tepki süresini ölçerek potansiyel redos zafiyetlerini bulmayı amaçlamaktayız.
 
+3. Bir input verildiğinde / Regex üretici
+İlk toolu yaptıktan sonra aklıma şöyle bir şey geldi. Biz input ifadeleri vererek bu input ifadelerine uygun bir regex ifade oluşturabilir miyiz? Evet tuhaf bir fikir fakat mümkün.
 
 
 
