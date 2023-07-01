@@ -208,3 +208,31 @@ Aşağıda, bu açığın nasıl çalıştığını açıklayan adımları bulab
     
 
 Bu açığı önlemek için, 2FA devre dışı bırakma sayfası gibi hassas işlemler için Clickjacking koruması uygulamak önemlidir. Örneğin, X-Frame-Options başlığını kullanarak sayfanın iframe içinde yüklenmesini engelleyebilir veya Content Security Policy (CSP) gibi güvenlik politikalarını kullanabilirsiniz.
+
+## Enabling 2FA doesn't expire Previously active Sessions
+
+"Enabling 2FA doesn't expire Previously active Sessions" şeklindeki güvenlik açığı, kullanıcının 2FA (İki Faktörlü Kimlik Doğrulama) özelliğini etkinleştirmesine rağmen önceden etkin olan oturumların sona ermediği durumlarda ortaya çıkar. Bu güvenlik açığına ek olarak oturum zaman aşımı açığı da varsa, saldırganın 2FA etkinleştirildikten sonra bile hesaba erişimini sürdürmesi mümkün olabilir.
+
+Bu güvenlik açığı, kullanıcının oturumunu daha önceden ele geçirmiş olan bir saldırganın, 2FA etkinleştirildikten sonra bile hesaba erişimini sürdürebilmesine olanak tanır. Bu da demek oluyor ki, 2FA tarafından sağlanan ek güvenlik katmanı, mevcut oturumun etkin kalması nedeniyle hesabı etkili bir şekilde koruyamaz.
+
+Bu güvenlik açığından yararlanmak isteyen bir saldırgan, genellikle kullanıcının hesabına yetkisiz erişim sağlar. Bu, oturum çerezlerini veya oturum kimliklerini çalarak veya başka oturum ele geçirme tekniklerini kullanarak gerçekleştirilebilir. Saldırgan kullanıcının oturumunu ele geçirdikten sonra, hesap üzerinde çeşitli kötü niyetli eylemler gerçekleştirebilir.
+
+Gerçek kullanıcının 2FA'yı etkinleştirmeye karar verdiğinde, sistem ideal olarak önceden etkin olan tüm oturumları geçersiz kılmalı ve saldırganın yeniden kimlik doğrulamasını zorlamalıdır. Ancak bu güvenlik açığı var olduğunda, daha önce ele geçirilen oturum 2FA etkinleştirildikten sonra bile geçerli kalır ve saldırganın engellenmeden hesaba erişimini sürdürmesine izin verir.
+
+## Bypass 2FA with null or 000000
+
+"Bypass 2FA with null or 000000" adı verilen bu yöntem, kullanıcının 2FA (İki Faktörlü Kimlik Doğrulama) korumasını atlamak için boş veya "000000" kodunu girmesini sağlar. Bu yöntem, 2FA'nın gerektirdiği güvenlik katmanını geçersiz kılar ve doğrulama sürecini atlar. Bu güvenlik açığı, aşağıdaki nedenlerden dolayı ortaya çıkabilir:
+
+1.  Geçersiz Kodlar: Sistem, 2FA kodunu doğrulamadan önce gelen değerleri kontrol etmez veya filtrelemez. Bu durumda, boş bir kod veya "000000" gibi geçersiz bir değer girildiğinde sistem, geçerli bir 2FA kodu gerekmeden oturumu açmaya izin verebilir.
+    
+2.  Hatalı Kontroller: 2FA doğrulama sürecinde yapılan kontroller yetersiz veya hatalı olabilir. Örneğin, sistem doğrulama kodunu doğrulamak için bir if koşulu kullanırken, boş veya "000000" gibi değerlerin geçerli olduğunu kontrol etmez. Bu durumda, kullanıcı bu değerleri girdiğinde sistem, geçerli bir 2FA kodu gerektirmeksizin oturumu açar.
+    
+
+**Tricks**
+
+1.  Boş veya "000000" Kod Girişi: Kötü niyetli bir saldırgan, 2FA doğrulama ekranında boş bir değer veya "000000" kodunu girebilir. Bu durumda, sistem, geçerli bir 2FA kodu kontrolü yapmadan oturumu açar ve saldırganı doğrulama sürecini atlatarak kullanıcının hesabına erişmesine izin verir.
+    
+2.  Yetersiz Kod Kontrolleri: Saldırgan, 2FA kodunu doğrulamak için kullanılan kod kontrol mekanizmasının zayıf noktalarını hedefleyebilir. Örneğin, sistemde hatalı bir kod kontrolü gerçekleştiriliyorsa veya boş değerlerin geçerli olduğu bir durum bulunuyorsa, saldırgan bu durumu istismar ederek 2FA korumasını atlayabilir.
+    
+
+Bu güvenlik açığı, 2FA'nın sağladığı güvenlik katmanının etkisiz hale gelmesine ve saldırganın hesaplara izinsiz erişim sağlamasına neden olabilir.
