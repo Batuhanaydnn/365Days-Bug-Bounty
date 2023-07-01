@@ -184,3 +184,27 @@ Bu açık, 2FA'nın güvenlik avantajını ortadan kaldırır ve hesapları sald
 
 "Backup Code Abuse" güvenlik açığını önlemek için, yedek kodların doğru bir şekilde takip edilmesi ve kullanıldıktan sonra geçersiz kılınması önemlidir. Her yedek kodun belirli bir kullanıcı hesabıyla ilişkilendirilmesi ve yalnızca bir kez kullanılabilmesi gerekmektedir. Ayrıca, yedek kodların yetkisiz erişim veya ele geçirme durumlarına karşı güçlü güvenlik önlemleriyle korunması gerekmektedir.
 
+## Clickjacking on 2FA Disabling Page
+
+"Clickjacking on 2FA Disabling Page" açığı, bir saldırganın 2FA (İki Faktörlü Kimlik Doğrulama) devre dışı bırakma sayfasını iframe ile çerçeveleyerek ve kurbanı sosyal mühendislik yöntemleriyle ikna ederek 2FA'nın devre dışı bırakılmasını sağlamaktır.
+
+Aşağıda, bu açığın nasıl çalıştığını açıklayan adımları bulabilirsiniz:
+
+1.  Saldırgan, hedef kullanıcının 2FA devre dışı bırakma sayfasını iframe ile çerçeveleyen bir kötü niyetli web sitesi veya sayfa oluşturur.
+    
+2.  Kötü niyetli web sitesi, kurbanın güvenini kazanmak için meşru bir görünüm sunabilir. Örneğin, meşru bir hizmetin arayüzünü taklit edebilir veya ilgi çekici bir içerik sunarak kurbanın dikkatini dağıtabilir.
+    
+3.  Saldırgan, kötü niyetli web sitesini kurbanı ikna edecek şekilde tasarlar. Örneğin, "Ödül kazanmak için 2FA'yı geçici olarak devre dışı bırakmanız gerekiyor" gibi bir mesajla kurbanın dikkatini çekebilir.
+    
+4.  Kurban kötü niyetli web sitesini ziyaret eder ve içerik iframe aracılığıyla sunulduğu için gerçek sayfada olduğunu fark etmez.
+    
+5.  Kurban, kötü niyetli web sitesindeki talimatlara uyarak 2FA'nın devre dışı bırakılması için gerekli bilgileri girer.
+    
+6.  İframe kullanıldığından, kurbanın girdiği bilgiler kötü niyetli web sitesine iletilir ve saldırgan bu bilgileri ele geçirir.
+    
+7.  Saldırgan, 2FA'nın başarıyla devre dışı bırakıldığını belirterek kurbanı yanıltır veya yönlendirir.
+    
+8.  Kurban, 2FA'nın gerçekten devre dışı bırakıldığına inanarak saldırganın kontrolü altına girmiş olur. Bu, hesap güvenliği için ciddi bir risk oluşturabilir ve saldırganın yetkisiz erişim elde etmesine veya zararlı eylemlerde bulunmasına olanak tanır.
+    
+
+Bu açığı önlemek için, 2FA devre dışı bırakma sayfası gibi hassas işlemler için Clickjacking koruması uygulamak önemlidir. Örneğin, X-Frame-Options başlığını kullanarak sayfanın iframe içinde yüklenmesini engelleyebilir veya Content Security Policy (CSP) gibi güvenlik politikalarını kullanabilirsiniz.
