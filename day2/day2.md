@@ -42,6 +42,10 @@ Redos açığı, giriş verisindeki düzenli ifadenin performansını hatalı ya
 
 Saldırgan, örneğin 'aaaaaaaaaaaaaaaaaaaaaaaaaaaab@aaaaaaaaaaab.com' gibi bir ifade gönderdiğinde `[\w\.-]+` kısmının ardışık olarak birçok 'a' karakteriyle eşleştiği bir durum ortaya çıkar. Regex bu durumu eşitleyip ilerlemek için normalde olduğundan çok daha fazla zaman harcar ve bu durum performansı düşürür hatta hizmetin çökmesine dahi sebep olabilir.
 
+2. Redos Zafiyet Tespiti / Fuzzing test yöntemi
+
+Fuzzing, uygulamalarda rastgele veya özel olarak oluşturulmuş girişlere saldırarak hata ve zayıflıkları bulmayı amaçlayan bi test yöntemidir. Burada farklı uzunluklarda ve karmaşıklıklarda regex'imize ifadeler göndererek regexin tepki süresini ölçerek potansiyel redos zafiyetlerini bulmayı amaçlamaktayız.
+
 
 
 
