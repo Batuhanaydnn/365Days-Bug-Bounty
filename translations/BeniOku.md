@@ -10,5 +10,5 @@ Harsh Bothra'nın 365 günlük Challangena farklı bir bakış açısı katmak i
 
 Repoyu Forklayarak farklı dillerde yazılmış simülasyonlarınızı gönderebilir yahut eklemek istediğiniz kısımları pr atabilirsiniz. Yıldız Yıldızoğlu atmayı unutmayın. İyi günler dilerim. Kodunuz bol bugınız az kazancınız bol olsun.
 
- - [Gün 1](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day1/day1.md)
- - [Gün 2](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day2/day2.md)
+ - [Gün 1](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun1.md)
+ - [Gün 2](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun2.md)
