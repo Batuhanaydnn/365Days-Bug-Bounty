@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>You are logged in to the dashboard.</p>
+    <form action="/enable_2fa" method="get">
+        <input type="submit" value="Enable 2FA">
+    </form>
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
+</body>
+
+</html>
