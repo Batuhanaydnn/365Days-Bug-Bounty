@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Disable 2FA</title>
+</head>
+
+<body>
+    <h1>Disable 2FA</h1>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="/disable_2fa">
+        <input type="text" name="backup_code" placeholder="Backup Code" required><br><br>
+        <input type="submit" value="Disable 2FA">
+    </form>
+</body>
+
+</html>
