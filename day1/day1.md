@@ -167,3 +167,20 @@ Açığın nasıl çalıştığını anlatan bir senaryo şu şekilde olabilir:
 - Artık saldırgan, hedef kullanıcının hesabına şifre ve 2FA kodu olmadan erişebilir.
 
 Bu açık, 2FA'nın güvenlik avantajını ortadan kaldırır ve hesapları saldırganların erişimine açık hale getirir. Kullanıcılar şifrelerini veya e-posta adreslerini değiştirdiklerinde, 2FA'nın otomatik olarak devre dışı bırakılmaması gerekmektedir.
+
+## Backup Code Abuse
+
+"Backup Code Abuse", yedek kod özelliğini kötüye kullanarak 2FA'nın (İki Faktörlü Kimlik Doğrulama) atlanmasını ve 2FA kısıtlamalarının kaldırılmasını sağlayan bir güvenlik açığıdır. Bu açığın nasıl çalıştığını anlatayım:
+
+- Yedek Kodlar: Bir 2FA sistemde, kullanıcılara birincil kimlik doğrulama yöntemine erişimlerini kaybettiklerinde kullanabilecekleri yedek kodlar sağlanır. Yedek kodlar genellikle bir liste şeklinde sunulur ve her kod yalnızca bir kez kullanılabilir.
+
+- Kod Tekrar Kullanımı: Bu açık, kullanıldıktan sonra yedek kodların geçersiz kılınmadığı veya takip edilmediği durumlarda ortaya çıkar. Eğer bir sistem, yedek kodun kullanıldığını işaretlemiyor veya kodu belirli bir kullanıcı hesabıyla ilişkilendirmiyorsa, bir saldırgan geçerli bir yedek kod elde ettiğinde bu kodu birden fazla kez kullanarak kimlik doğrulamasını geçebilir.
+
+- 2FA'nın Atlanması: Bu güvenlik açığından yararlanmak için saldırganın hedef kullanıcının hesabına ilişkilendirilmiş geçerli bir yedek kod elde etmesi gerekmektedir. Bu, sosyal mühendislik, phishing saldırıları veya kullanıcının cihazını veya hesabını ele geçirmek gibi çeşitli yöntemlerle gerçekleştirilebilir.
+
+- Yedek Kodun Kötüye Kullanılması: Saldırgan, geçerli bir yedek kodu, 2FA kimlik doğrulama sürecinde düzenli 2FA kodu yerine kullanabilir. Yedek kodun geçerliliği veya kullanımı takip edilmediği için, sistem saldırgana erişim izni verir ve böylece 2FA korumasını atlar.
+
+- 2FA'nın Kaldırılması / Sıfırlanması: Yedek kodu kullanarak 2FA'yı başarıyla atlattıktan sonra, saldırgan meşru bir 2FA cihazına ihtiyaç duymadan kullanıcının hesabına yetkisiz erişim sağlar. Ardından, 2FA kısıtlamalarını kaldırabilir veya sıfırlayabilir, böylece hesap daha fazla saldırıya veya yetkisiz erişime açık hale gelir.
+
+"Backup Code Abuse" güvenlik açığını önlemek için, yedek kodların doğru bir şekilde takip edilmesi ve kullanıldıktan sonra geçersiz kılınması önemlidir. Her yedek kodun belirli bir kullanıcı hesabıyla ilişkilendirilmesi ve yalnızca bir kez kullanılabilmesi gerekmektedir. Ayrıca, yedek kodların yetkisiz erişim veya ele geçirme durumlarına karşı güçlü güvenlik önlemleriyle korunması gerekmektedir.
+
