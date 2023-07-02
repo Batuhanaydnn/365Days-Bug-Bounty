@@ -13,3 +13,4 @@ Repoyu Forklayarak farklı dillerde yazılmış simülasyonlarınızı göndereb
  - [Gün 1](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun1.md)
  - [Gün 2](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun2.md)
  - [Gün 3](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun3.md)
+ - [Gün 4](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/gun4.md)
