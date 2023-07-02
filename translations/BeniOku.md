@@ -1,4 +1,4 @@
-[İngilizce](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/translations/BeniOku.md)
+[İngilizce](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/README.md)
 
 # 365Days-Bug-Bounty
 
