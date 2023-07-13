@@ -18,6 +18,8 @@ You can send your simulations written in different languages by forking the repo
  - [Day 6](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day6/day6.md)
  - [Day 7](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day7/day7.md)
  - [Day 8](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day8/day8.md)
+ - [Day 9](https://github.com/Batuhanaydnn/365Days-Bug-Bounty/blob/master/day9/day9.md)
+
 
 
 
